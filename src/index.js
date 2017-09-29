@@ -1,4 +1,5 @@
-module.exports = function zeros(expression) {
+//module.exports = 
+function zeros(expression) {
   let n = 5;
   let result = '1';
   let zero = 0;		      		
@@ -24,14 +25,13 @@ module.exports = function zeros(expression) {
     }
   }
 
-  while(true){ 
-    let foundPos = result.indexOf(0, pos);
-    if (foundPos == -1) break;
-    
-    zero++;
-    pos = foundPos + 1;
+  result.split('');
+  let x = result.length - 1;
+  while(result[x] == '0'){    
+    x--;
+    ++zero;       
   }
-  
+
   return zero;
 }
 
@@ -72,3 +72,7 @@ module.exports = function zeros(expression) {
   }
   return result.join('');
 } 
+
+
+
+alert(zeros('10!'));
