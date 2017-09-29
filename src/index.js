@@ -1,5 +1,4 @@
-//module.exports = 
-function zeros(expression) {
+module.exports = function zeros(expression) {
   let n = 5;
   let result = '1';
   let zero = 0;		      		
@@ -73,6 +72,3 @@ function zeros(expression) {
   return result.join('');
 } 
 
-
-
-alert(zeros('10!'));
