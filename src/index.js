@@ -24,11 +24,12 @@ module.exports = function zeros(expression) {
     }
   }
 
-  while (true) {    
-    if (result.charAt(pos) != 0) break;    
-    zero++;
-    pos--;
-}
+  result.split('');
+  let x = result.length - 1;
+  while(result[x] == '0'){    
+    x--;
+    ++zero;       
+  }
 
   return zero;
 }
@@ -70,4 +71,3 @@ module.exports = function zeros(expression) {
   }
   return result.join('');
 } 
-
