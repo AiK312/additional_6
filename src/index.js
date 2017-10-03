@@ -44,7 +44,7 @@ module.exports = function zeros(expression) {
   return count;
 }
 
-console.log(zeros("10!!"));
+//console.log(zeros("9!!*10!!*7!!"));
 
  function multiply(first, second) {
   let arrayFirst = first.split('').reverse();
