@@ -1,38 +1,54 @@
-module.exports = function zeros(expression) {
-  let n = 5;
-  let result = '1';
-  let zero = 0;		      		
-  let pos = 0;		      
-  
-  let commonFac = expression.split('*');
-  
-  let singleFac = [];
-  let doubleFac = [];
-  
-  for (let i = 0; i < commonFac.length; i++){
-  	if (~commonFac[i].indexOf("!!")){
-    	doubleFac.push(parseInt(commonFac[i]));
+//module.exports = 
+function zeros(expression) {
+
+  let sourceArray = expression.split('*');//splitting
+  let size = sourceArray.length;//size of sourceArray
+  let subArray = [];
+  let a = 0; //counter in while cycle
+  let result = '1';//final result
+  let tempResult = '1';//temp result
+  let doublefact = false;//single or double fact
+  let count = 0;//count of zeros
+
+  while (a < size) {
+    subArray = sourceArray[a].split('!');
+
+    if(subArray.length == 3){
+      doublefact = true;
+    }else{
+      doublefact = false;
     }
-    else{
-    	singleFac.push(parseInt(commonFac[i]));
-    }
+
+    if(!doublefact){
+      for(let i = 1; i <= subArray[0]; i++){
+        tempResult = multiply(tempResult, i.toString());        
+      }
+    }else{
+      if(subArray[0] % 2 == 0){
+        for(let i = 2; i <= subArray[0]; i = i+2){
+          tempResult = multiply(tempResult, i.toString());          
+        }
+      }else{
+        for(let i = 1; i <= subArray[0]; i = i+2){
+          tempResult = multiply(tempResult, i.toString());          
+        }
+      }
+    }    
+    result = multiply(result, tempResult);
+    tempResult = '1';
+    a++;
   }
 
-  for(let i = 0; i < singleFac.length; i++){
-    for(let j = 1; j <= singleFac[i]; j++){
-			result = multiply(result, j.toString());
-    }
+  let pos = result.length - 1;
+  while(result[pos] == '0'){
+    count++;
+    pos--;
   }
-
-  result.split('');
-  let x = result.length - 1;
-  while(result[x] == '0'){    
-    x--;
-    ++zero;       
-  }
-
-  return zero;
+  console.log(result, result.length);
+  return count;
 }
+
+console.log(zeros("1!!*2!!*3!!*4!!*5!!*6!!*7!!*8!!*9!!*10!!*1!!*2!!*3!!*4!!*5!!*6!!*7!!*8!!*9!!*10!!"));
 
  function multiply(first, second) {
   let arrayFirst = first.split('').reverse();
