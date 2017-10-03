@@ -1,18 +1,16 @@
-//module.exports = 
-function zeros(expression) {
+module.exports = function zeros(expression) {
 
   let sourceArray = expression.split('*');//splitting
   let size = sourceArray.length;//size of sourceArray
   let subArray = [];
   let a = 0; //counter in while cycle
   let result = '1';//final result
-  let tempResult = '1';//temp result
   let doublefact = false;//single or double fact
   let count = 0;//count of zeros
 
   while (a < size) {
     subArray = sourceArray[a].split('!');
-
+    
     if(subArray.length == 3){
       doublefact = true;
     }else{
@@ -21,21 +19,19 @@ function zeros(expression) {
 
     if(!doublefact){
       for(let i = 1; i <= subArray[0]; i++){
-        tempResult = multiply(tempResult, i.toString());        
+        result = multiply(result, i.toString());        
       }
     }else{
       if(subArray[0] % 2 == 0){
         for(let i = 2; i <= subArray[0]; i = i+2){
-          tempResult = multiply(tempResult, i.toString());          
+          result = multiply(result, i.toString());          
         }
       }else{
         for(let i = 1; i <= subArray[0]; i = i+2){
-          tempResult = multiply(tempResult, i.toString());          
+          result = multiply(result, i.toString());          
         }
       }
-    }    
-    result = multiply(result, tempResult);
-    tempResult = '1';
+    }  
     a++;
   }
 
@@ -48,7 +44,7 @@ function zeros(expression) {
   return count;
 }
 
-console.log(zeros("1!!*2!!*3!!*4!!*5!!*6!!*7!!*8!!*9!!*10!!*1!!*2!!*3!!*4!!*5!!*6!!*7!!*8!!*9!!*10!!"));
+console.log(zeros("10!!"));
 
  function multiply(first, second) {
   let arrayFirst = first.split('').reverse();
